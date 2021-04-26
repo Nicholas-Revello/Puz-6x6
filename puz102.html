@@ -1,16 +1,135 @@
-﻿<!--  Add some general comments -->
-<!--  date, author and changes are good here -->
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <title>V1.02 Binary Puzzle 6x6</title>
     <script type='text/javascript'>  
-        //  21/7/19 - Basic Visual Studio Setup 
-        //  May you can mount your site on GitHub and practice pushing changes??
+        /*Function to Swtitch the numbers between 1, 0, and null*/
+        function SwitchNumber(ButtonChange) {
+
+            if (ButtonChange.value == "1")
+                ButtonChange.value = "0";
+            else if (ButtonChange.value == "0")
+                ButtonChange.value = "";
+            else
+                ButtonChange.value = "1";
+
+            TwoDArray();
+        }
+
+        function SolveRow() {
+            // Variables Used
+            var Row1 = ["1", "2", "3", "4", "5", "6", "7"]
+            var HowMany0 = 0;
+            var HowMany1 = 0;
+            var HowManyNull = 0;
+            var BoxName = "Box";
+            var Box1 = document.getElementById("Box1").value;
+            var Box2 = document.getElementById("Box2").value;
+            var Box3 = document.getElementById("Box3").value;
+            var Box4 = document.getElementById("Box4").value;
+            var Box5 = document.getElementById("Box5").value;
+            var Box6 = document.getElementById("Box6").value;
+            var AllGood = true;
+
+            //Checking How many 1's, 0's, and null's
+            if (Box1 == "1")
+                HowMany1++;
+            else if (Box1 == "0")
+                HowMany0++;
+            else HowManyNull++;
+
+            if (Box2 == "1")
+                HowMany1++;
+            else if (Box2 == "0")
+                HowMany0++;
+            else HowManyNull++;
+
+            if (Box3 == "1")
+                HowMany1++;
+            else if (Box3 == "0")
+                HowMany0++;
+            else HowManyNull++;
+
+            if (Box4 == "1")
+                HowMany1++;
+            else if (Box4 == "0")
+                HowMany0++;
+            else HowManyNull++;
+
+            if (Box5 == "1")
+                HowMany1++;
+            else if (Box5 == "0")
+                HowMany0++;
+            else HowManyNull++;
+
+            if (Box6 == "1")
+                HowMany1++;
+            else if (Box6 == "0")
+                HowMany0++;
+            else HowManyNull++;
+
+            //Checking for ones and zeros and making sure they wont compile an error
+            if (HowMany1 > 3)
+                alert("You have more than 3 ones error will occur");
+            else if (HowMany0 > 3)
+                alert("You have more than 3 zeros error will occur");
+            else if (Box1 == "1" && Box2 == "1" && Box3 == "1") {
+                alert("You have three ones next to each other");
+                AllGood = false;
+            }
+
+            //Filling in if there is 3 1's or 0's
+            if (HowMany1 == 3 && AllGood == true) {
+
+                for (var i = 1; i < Row1.length; i++) {
+                    var BoxCycle = document.getElementById("Box" + [i]).value;
+                    if (BoxCycle == "") {
+                        alert("Box" + [i]);
+                        document.getElementById("Box" + [i]).value = "0";
+                    }
+                } 
+            }
+
+            if (HowMany0 == 3 && AllGood == true) {
+
+                for (var ii = 1; ii < Row1.length; ii++) {
+                    var BoxCycle = document.getElementById("Box" + [ii]).value;
+                    if (BoxCycle == "") {
+                        alert("Box" + [ii]);
+                        document.getElementById("Box" + [ii]).value = "1";
+                    }
+                }
+            }
+
+            if (HowMany1 == 2 && HowMany0 == 2 && AllGood == true) {
+
+                for (var iii = 1; iii < Row1.length; i++) {
+                    var BoxCycle = document.getElementById("Box" + [iii]).value;
+                    if (BoxCycle == "") {
+                        alert("Box" + [iii]);
+                        document.getElementById("Box" + [iii]).value = "0";
+                    }
+                }
+            }
+        }
+
+        function TwoDArray() {
+            var Box1 = document.getElementById("Box1").value;
+            var Box2 = document.getElementById("Box2").value;
+            var Box3 = document.getElementById("Box3").value;
+            var Box4 = document.getElementById("Box4").value;
+            var Box5 = document.getElementById("Box5").value;
+            var Box6 = document.getElementById("Box6").value;
+            var BoxArray = Box1 + ", " + Box2 + ", " + Box3 + ", " + Box4 + ", " + Box5 + ", " + Box6;
+            document.getElementById("Array").value = BoxArray;
+        }
+        
+
 
     </script>
     <style type="text/css">
+        /*Style of the Table*/
         .gameboard, td, th {
             width: 40px;
             height: 40px;
@@ -25,7 +144,7 @@
     </style>
 </head>
 <body onload="arrView()">
-    <!--  notes about modules  -->
+    <!-- The body and physical properties on the page -->
     <form id="input">
         <h1>6x6 Binary Puzzle Game</h1>
         <h2>V1.02: This version is V1.02</h2>
@@ -35,95 +154,99 @@
         <table class="gameboard">
             <tr>
                 <td>
-                    <input id="1a" type="text" class="gameboard" /></td>
+                    <!-- This is the table -->
+                    <input id="Box1" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="1a0" type="text" class="gameboard" /></td>
+                    <input id="Box2" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="1a1" type="text" class="gameboard" /></td>
+                    <input id="Box3" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="1a2" type="text" class="gameboard" /></td>
+                    <input id="Box4" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="1a3" type="text" class="gameboard" /></td>
+                    <input id="Box5" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="1a4" type="text" class="gameboard" /></td>
+                    <input id="Box6" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
             </tr>
 
             <tr>
                 <td>
-                    <input id="1a5" type="text" class="gameboard" /></td>
+                    <input id="BoxG" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="1a6" type="text" class="gameboard" /></td>
+                    <input id="BoxH" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="1a7" type="text" class="gameboard" /></td>
+                    <input id="BoxI" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="1a8" type="text" class="gameboard" /></td>
+                    <input id="BoxJ" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="1a9" type="text" class="gameboard" /></td>
+                    <input id="BoxK" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="1a10" type="text" class="gameboard" /></td>
+                    <input id="BoxL" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
             </tr>
 
             <tr>
                 <td>
-                    <input id="1a11" type="text" class="gameboard" /></td>
+                    <input id="BoxM" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="1a12" type="text" class="gameboard" /></td>
+                    <input id="BoxN" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="1a13" type="text" class="gameboard" /></td>
+                    <input id="BoxO" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="1a14" type="text" class="gameboard" /></td>
+                    <input id="BoxP" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="1a15" type="text" class="gameboard" /></td>
+                    <input id="BoxQ" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="1a16" type="text" class="gameboard" /></td>
+                    <input id="BoxR" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
             </tr>
 
             <tr>
                 <td>
-                    <input id="1a17" type="text" class="gameboard" /></td>
+                    <input id="BoxS" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="1a18" type="text" class="gameboard" /></td>
+                    <input id="BoxT" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="1a19" type="text" class="gameboard" /></td>
+                    <input id="BoxU" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="1a20" type="text" class="gameboard" /></td>
+                    <input id="BoxV" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="1a21" type="text" class="gameboard" /></td>
+                    <input id="BoxW" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="1a22" type="text" class="gameboard" /></td>
+                    <input id="BoxX" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
             </tr>
 
             <tr>
                 <td>
-                    <input id="1a23" type="text" class="gameboard" /></td>
+                    <input id="BoxY" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="1a24" type="text" class="gameboard" /></td>
+                    <input id="BoxZ" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="1a25" type="text" class="gameboard" /></td>
+                    <input id="BoxAA" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="1a26" type="text" class="gameboard" /></td>
+                    <input id="BoxAB" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="1a27" type="text" class="gameboard" /></td>
+                    <input id="BoxAC" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="1a28" type="text" class="gameboard" /></td>
+                    <input id="BoxAD" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
             </tr>
 
             <tr>
                 <td>
-                    <input id="1a29" type="text" class="gameboard" /></td>
+                    <input id="BoxAE" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="1a30" type="text" class="gameboard" /></td>
+                    <input id="BoxAF" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="1a31" type="text" class="gameboard" /></td>
+                    <input id="BoxAG" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="1a32" type="text" class="gameboard" /></td>
+                    <input id="BoxAH" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="1a33" type="text" class="gameboard" /></td>
+                    <input id="BoxAI" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="1a34" type="text" class="gameboard" /></td>
+                    <input id="BoxAJ" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
             </tr>
-
         </table>
     </form>
+
+    <input id="SolveOnceButton" type="button" value="---Solve once---" onclick="SolveRow()" />
+    <input id="Array" type="Button" value=""/>
+
 </body>
 </html>
