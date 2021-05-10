@@ -48,6 +48,9 @@
 
 
         var G1 = [A1, A2, A3, A4, A5, A6, B1, B2, B3, B4, B5, B6, C1, C2, C3, C4, C5, C6, D1, D2, D3, D4, D5, D6, E1, E2, E3, E4, E5, E6, F1, F2, F3, F4, F5, F6]
+        var Row = 6;
+        var Col = 6;
+        var Grid = [];
 
         /*Function to Swtitch the numbers between 1, 0, and null*/
         function SwitchNumber(ButtonChange) {
@@ -60,7 +63,39 @@
                 ButtonChange.value = "1";
         }
 
-        function SolveAll() {
+       /* function displayGrid(G2D) {
+            for (let j = 0; j < Col; j++) {
+                for (let i = 0; i < Row; i++) {
+                    document.getElementById('B' + (i + 1) + (j + 1)).value = G2D[j][i];
+                }
+            }
+        }*/
+
+        function BinaryPuzzelSolver() {
+
+        }
+
+        function SolvePuzzel() {
+
+        }
+
+        function SolveNumberPairs() {
+
+        }
+
+        function SolveRowPairs() {
+
+        }
+
+        function SolveColPairs() {
+
+        }
+
+        function SolveNumberTrios() {
+
+        }
+
+        function CompleteRowCols() {
 
         }
 
@@ -181,8 +216,21 @@
             </tr>
         </table>
     </form>
-
-    <input id="SolveAllButton" type="button" value="---Solve All---" onclick="SolveAll()" />
+        <br />
+        The buttons here form a test bed similar to the structure chart.
+        <br />
+        Later, we can improve the screen design.<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+        <input type="button" value="--- Solve repeat ---" onclick="BinaryPuzzleSolver()" />&nbsp;&nbsp;&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
+        <input type="button" value="--- Solve once ---" onclick="SolvePuzzle()" />&nbsp;&nbsp;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="SolveNumberPairs()" type="button" value="Pairs" />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+                <input type="button" value="Trios" onclick="SolveNumberTrios()" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="button" value="Complete" onclick="CompleteRowsCols()" />
+        <br />
+&nbsp;<input type="button" value="RowPairs" onclick="SolveRowPairs()" />&nbsp;
+        <input type="button" value="ColPairs" onclick="SolveColPairs()" />&nbsp;
+<br />
     <br />
      <textarea id="arrayView1D" cols="30" rows="7"></textarea><br />
         <br />
