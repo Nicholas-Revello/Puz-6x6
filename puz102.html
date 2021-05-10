@@ -3,7 +3,52 @@
 <head>
     <meta charset="utf-8">
     <title>V1.02 Binary Puzzle 6x6</title>
-    <script type='text/javascript'>  
+    <script type='text/javascript'>
+        var A1 = document.getElementById("A1").value;
+        var A2 = document.getElementById("A2").value;
+        var A3 = document.getElementById("A3").value;
+        var A4 = document.getElementById("A4").value;
+        var A5 = document.getElementById("A5").value;
+        var A6 = document.getElementById("A6").value;
+
+        var B1 = document.getElementById("B1").value;
+        var B2 = document.getElementById("B2").value;
+        var B3 = document.getElementById("B3").value;
+        var B4 = document.getElementById("B4").value;
+        var B5 = document.getElementById("B5").value;
+        var B6 = document.getElementById("B6").value;
+
+        var C1 = document.getElementById("C1").value;
+        var C2 = document.getElementById("C2").value;
+        var C3 = document.getElementById("C3").value;
+        var C4 = document.getElementById("C4").value;
+        var C5 = document.getElementById("C5").value;
+        var C6 = document.getElementById("C6").value;
+
+        var D1 = document.getElementById("D1").value;
+        var D2 = document.getElementById("D2").value;
+        var D3 = document.getElementById("D3").value;
+        var D4 = document.getElementById("D4").value;
+        var D5 = document.getElementById("D5").value;
+        var D6 = document.getElementById("D6").value;
+
+        var E1 = document.getElementById("E1").value;
+        var E2 = document.getElementById("E2").value;
+        var E3 = document.getElementById("E3").value;
+        var E4 = document.getElementById("E4").value;
+        var E5 = document.getElementById("E5").value;
+        var E6 = document.getElementById("E6").value;
+
+        var F1 = document.getElementById("F1").value;
+        var F2 = document.getElementById("F2").value;
+        var F3 = document.getElementById("F3").value;
+        var F4 = document.getElementById("F4").value;
+        var F5 = document.getElementById("F5").value;
+        var F6 = document.getElementById("F6").value;
+
+
+        var G1 = [A1, A2, A3, A4, A5, A6, B1, B2, B3, B4, B5, B6, C1, C2, C3, C4, C5, C6, D1, D2, D3, D4, D5, D6, E1, E2, E3, E4, E5, E6, F1, F2, F3, F4, F5, F6]
+
         /*Function to Swtitch the numbers between 1, 0, and null*/
         function SwitchNumber(ButtonChange) {
 
@@ -13,282 +58,11 @@
                 ButtonChange.value = "";
             else
                 ButtonChange.value = "1";
-
-            TwoDArray();
         }
 
         function SolveAll() {
-            // Variables Used
-            var Row1 = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36",]
-            var Row2 = ["1", "2", "3", "4", "5", "6", "7"];
-            var Row3 = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"];
-            var Row4 = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19"];
-            var Row5 = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25"];
-            var Row6 = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"];
-            var Row7 = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37"];
-            var HowMany0 = 0;
-            var HowMany1 = 0;
-            var HowManyNull = 0;
-            var BoxName = "Box";
-            var Box1 = document.getElementById("Box1").value;
-            var Box2 = document.getElementById("Box2").value;
-            var Box3 = document.getElementById("Box3").value;
-            var Box4 = document.getElementById("Box4").value;
-            var Box5 = document.getElementById("Box5").value;
-            var Box6 = document.getElementById("Box6").value;
-            var AllGood = true;
-            var NumberOf1inRow = 0;
-            var NumberOf0inRow = 0;
-            var Row1Comp = true;
-            var CurrentRow = 1;
 
-            //Checking How many 1's, 0's, and null's
-            if (Box1 == "1")
-                HowMany1++;
-            else if (Box1 == "0")
-                HowMany0++;
-            else HowManyNull++;
-
-            if (Box2 == "1")
-                HowMany1++;
-            else if (Box2 == "0")
-                HowMany0++;
-            else HowManyNull++;
-
-            if (Box3 == "1")
-                HowMany1++;
-            else if (Box3 == "0")
-                HowMany0++;
-            else HowManyNull++;
-
-            if (Box4 == "1")
-                HowMany1++;
-            else if (Box4 == "0")
-                HowMany0++;
-            else HowManyNull++;
-
-            if (Box5 == "1")
-                HowMany1++;
-            else if (Box5 == "0")
-                HowMany0++;
-            else HowManyNull++;
-
-            if (Box6 == "1")
-                HowMany1++;
-            else if (Box6 == "0")
-                HowMany0++;
-            else HowManyNull++;
-
-            //Checking for ones and zeros and making sure they wont compile an error
-            if (HowMany1 > 3)
-                alert("You have more than 3 ones error will occur");
-            else if (HowMany0 > 3)
-                alert("You have more than 3 zeros error will occur");
-            else if (Box1 == "1" && Box2 == "1" && Box3 == "1") {
-                alert("You have three ones next to each other");
-                AllGood = false;
-            }
-
-            //Filling in if there is 3 1's or 0's
-            if (HowMany1 == 3 && AllGood == true) {
-                
-                for (let i = 1; i < Row1.length; i++) {
-                    var BoxCycle = document.getElementById("Box" + [i]).value;
-                    if (BoxCycle == "") {
-                        alert("Box" + [i]);
-                        document.getElementById("Box" + [i]).value = "0";
-                    }
-                }
-            }
-
-            if (HowMany0 == 3 && AllGood == true) {
-                if (CurrentRow == 1) {
-                    for (let ii = 1; ii < Row2.length; ii++) {
-                        var BoxCycle = document.getElementById("Box" + [ii]).value;
-                        if (BoxCycle == "") {
-                            alert("Box" + [ii]);
-                            document.getElementById("Box" + [ii]).value = "1";
-                        }
-                    }
-                } else if (CurrentRow == 2) {
-                    for (let ii = 1; ii < Row3.length; ii++) {
-                        var BoxCycle = document.getElementById("Box" + [ii]).value;
-                        if (BoxCycle == "") {
-                            alert("Box" + [ii]);
-                            document.getElementById("Box" + [ii]).value = "1";
-                        }
-                    }
-                } else if (CurrentRow == 3) {
-                    for (let ii = 1; ii < Row4.length; ii++) {
-                        var BoxCycle = document.getElementById("Box" + [ii]).value;
-                        if (BoxCycle == "") {
-                            alert("Box" + [ii]);
-                            document.getElementById("Box" + [ii]).value = "1";
-                        }
-                    }
-                } else if (CurrentRow == 4) {
-                    for (let ii = 1; ii < Row5.length; ii++) {
-                        var BoxCycle = document.getElementById("Box" + [ii]).value;
-                        if (BoxCycle == "") {
-                            alert("Box" + [ii]);
-                            document.getElementById("Box" + [ii]).value = "1";
-                        }
-                    }
-                } else if (CurrentRow == 5) {
-                    for (let ii = 1; ii < Row6.length; ii++) {
-                        var BoxCycle = document.getElementById("Box" + [ii]).value;
-                        if (BoxCycle == "") {
-                            alert("Box" + [ii]);
-                            document.getElementById("Box" + [ii]).value = "1";
-                        }
-                    }
-                } else if (CurrentRow == 6) {
-                    for (let ii = 1; ii < Row7.length; ii++) {
-                        var BoxCycle = document.getElementById("Box" + [ii]).value;
-                        if (BoxCycle == "") {
-                            alert("Box" + [ii]);
-                            document.getElementById("Box" + [ii]).value = "1";
-                        }
-                    }
-                }
-            }
-
-            //Filling in between two ones
-            if (AllGood == true /*&& HowMany1 == 2*/) {
-                for (let i = 1; i < Row1.length; i++) {
-                    var BoxCycle = document.getElementById("Box" + [i]).value;
-                    if (BoxCycle == "1") {
-                        NumberOf1inRow++;
-                    } else if (BoxCycle == "") {
-                        i++;
-                        var NextBoxCheck = document.getElementById("Box" + [i]).value;
-                        if (NextBoxCheck == "" || NextBoxCheck == "0") {
-                            NumberOf1inRow = 0;
-                        } else {
-                            NumberOf1inRow++;
-                        }
-                        i--;
-                    }
-
-                    if (NumberOf1inRow == 2) {
-                        i++;
-                        var Next2BoxCheck = document.getElementById("Box" + [i]).value;
-                        if (Next2BoxCheck == "") {
-                            document.getElementById("Box" + [i]).value = "0";
-                            NumberOf1inRow = 0;
-                        }
-                        i--;
-                        var ThisBoxCheck = document.getElementById("Box" + [i]).value;
-                        if (ThisBoxCheck == "") {
-                            document.getElementById("Box" + [i]).value = "0";
-                            NumberOf1inRow = 0;
-                        }
-                    }
-
-                    if (i >= 7 && <= 13) {
-                        CurrentRow++;
-                    } else if (i >= 13 && <= 19) {
-                        CurrentRow++;
-                    } else if (i >= 19 && <= 25) {
-                        CurrentRow++;
-                    } else if (i >= 25 && <= 31)
-                }
-            }
-
-            //Filling in between two zeros
-            if (AllGood == true /*&& HowMany0 == 2*/) {
-                for (let i = 1; i < Row1.length; i++) {
-                    var BoxCycle2 = document.getElementById("Box" + [i]).value;
-                    if (BoxCycle2 == "0") {
-                        NumberOf0inRow++;
-                    } else if (BoxCycle2 == "") {
-                        i++;
-                        var NextBoxCheck2 = document.getElementById("Box" + [i]).value;
-                        if (NextBoxCheck2 == "" || NextBoxCheck2 == "1") {
-                            NumberOf0inRow = 0;
-                        } else {
-                            NumberOf0inRow++;
-                        }
-                        i--;
-                    }
-
-                    if (NumberOf0inRow == 2) {
-                        i++;
-                        var Next2BoxCheck2 = document.getElementById("Box" + [i]).value;
-                        if (Next2BoxCheck2 == "") {
-                            document.getElementById("Box" + [i]).value = "1";
-                            NumberOf0inRow = 0;
-                        }
-                        i--;
-                        var ThisBoxCheck = document.getElementById("Box" + [i]).value;
-                        if (ThisBoxCheck == "") {
-                            document.getElementById("Box" + [i]).value = "1";
-                            NumberOf0inRow = 0;
-                        }
-                    }
-                }
-            }
         }
-
-        //Array code to make each row appear within the array
-        function TwoDArray() {
-            var Box1 = document.getElementById("Box1").value;
-            var Box2 = document.getElementById("Box2").value;
-            var Box3 = document.getElementById("Box3").value;
-            var Box4 = document.getElementById("Box4").value;
-            var Box5 = document.getElementById("Box5").value;
-            var Box6 = document.getElementById("Box6").value;
-            var Box7 = document.getElementById("Box7").value;
-            var Box8 = document.getElementById("Box8").value;
-            var Box9 = document.getElementById("Box9").value;
-            var Box10 = document.getElementById("Box10").value;
-            var Box11 = document.getElementById("Box11").value;
-            var Box12 = document.getElementById("Box12").value;
-            var Box13 = document.getElementById("Box13").value;
-            var Box14 = document.getElementById("Box14").value;
-            var Box15 = document.getElementById("Box15").value;
-            var Box16 = document.getElementById("Box16").value;
-            var Box17 = document.getElementById("Box17").value;
-            var Box18 = document.getElementById("Box18").value;
-            var Box19 = document.getElementById("Box19").value;
-            var Box20 = document.getElementById("Box20").value;
-            var Box21 = document.getElementById("Box21").value;
-            var Box22 = document.getElementById("Box22").value;
-            var Box23 = document.getElementById("Box23").value;
-            var Box24 = document.getElementById("Box24").value;
-            var Box25 = document.getElementById("Box25").value;
-            var Box26 = document.getElementById("Box26").value;
-            var Box27 = document.getElementById("Box27").value;
-            var Box28 = document.getElementById("Box28").value;
-            var Box29 = document.getElementById("Box29").value;
-            var Box30 = document.getElementById("Box30").value;
-            var Box31 = document.getElementById("Box31").value;
-            var Box32 = document.getElementById("Box32").value;
-            var Box33 = document.getElementById("Box33").value;
-            var Box34 = document.getElementById("Box34").value;
-            var Box35 = document.getElementById("Box35").value;
-            var Box36 = document.getElementById("Box36").value;
-            
-            var BoxArray = Box1 + ", " + Box2 + ", " + Box3 + ", " + Box4 + ", " + Box5 + ", " + Box6;
-            document.getElementById("Array").value = "[ " + BoxArray + " ]";
-
-            var BoxArray2 = Box7 + ", " + Box8 + ", " + Box9 + ", " + Box10 + ", " + Box11 + ", " + Box12;
-            document.getElementById("Array2").value = "[ " + BoxArray2 + " ]";
-
-            var BoxArray3 = Box13 + ", " + Box14 + ", " + Box15 + ", " + Box16 + ", " + Box17 + ", " + Box18;
-            document.getElementById("Array3").value = "[ " + BoxArray3 + " ]";
-
-            var BoxArray4 = Box19 + ", " + Box20 + ", " + Box21 + ", " + Box22 + ", " + Box23 + ", " + Box24;
-            document.getElementById("Array4").value = "[ " + BoxArray4 + " ]";
-
-            var BoxArray5 = Box25 + ", " + Box26 + ", " + Box27 + ", " + Box28 + ", " + Box29 + ", " + Box30;
-            document.getElementById("Array5").value = "[ " + BoxArray5 + " ]";
-
-            var BoxArray6 = Box31 + ", " + Box32 + ", " + Box33 + ", " + Box34 + ", " + Box35 + ", " + Box36;
-            document.getElementById("Array6").value = "[ " + BoxArray6 + " ]";
-        }
-        
-
 
     </script>
     <style type="text/css">
@@ -318,92 +92,92 @@
             <tr>
                 <td>
                     <!-- This is the table -->
-                    <input id="Box1" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="A1" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="Box2" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="A2" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="Box3" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="A3" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="Box4" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="A4" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="Box5" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="A5" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="Box6" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="A6" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
             </tr>
 
             <tr>
                 <td>
-                    <input id="Box7" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="B1" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="Box8" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="B2" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="Box9" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="B3" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="Box10" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="B4" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="Box11" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="B5" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="Box12" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="B6" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
             </tr>
 
             <tr>
                 <td>
-                    <input id="Box13" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="C1" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="Box14" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="C2" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="Box15" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="C3" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="Box16" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="C4" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="Box17" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="C5" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="Box18" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="C6" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
             </tr>
 
             <tr>
                 <td>
-                    <input id="Box19" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="D1" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="Box20" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="D2" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="Box21" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="D3" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="Box22" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="D4" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="Box23" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="D5" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="Box24" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="D6" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
             </tr>
 
             <tr>
                 <td>
-                    <input id="Box25" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="E1" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="Box26" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="E2" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="Box27" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="E3" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="Box28" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="E4" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="Box29" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="E5" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="Box30" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="E6" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
             </tr>
 
             <tr>
                 <td>
-                    <input id="Box31" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="F1" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="Box32" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="F2" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="Box33" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="F3" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="Box34" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="F4" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="Box35" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="F5" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
                 <td>
-                    <input id="Box36" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
+                    <input id="F6" type="button" value="" class="gameboard" onclick ="return SwitchNumber(this);"/></td>
             </tr>
         </table>
     </form>
