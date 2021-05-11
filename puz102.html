@@ -96,10 +96,8 @@
         }
 
         function loadGrid(G) {                    // load 6x6 test games
-            //var Row = 6;                        // declare # of rows
-            //var Col = 6;                        // declare # of columns
             var GridCol = []; // array of a row, with indexes as column numbers
-            var Grid = [];   // Clear the last grid ready for the new load
+            Grid = [];   // Clear the last grid ready for the new load
 
             // 27/4/21, Nev - pushing the 6 rows to [Grid] to create a 2D array
             for (let j = 0; j < Row; j++) { //Row loop - like the "y" coordinates
@@ -142,11 +140,27 @@
             window.alert('SolveNumberPairs has not been coded yet');
         }
         function SolveRowPairs() { // See pseudocode in Q22f for the row part here
-            window.alert('SolveRowPairs has not been coded yet');
+            //  7/5/21 Nev, as in psuedo below - adds the opposite number to either side of a row pair
+            var GridSize = 6;
+            for (let Row = 0; Row < GridSize; Row++) { // 0 - 5 does the bottom row
+                for (let Col = 0; Col < GridSize - 1; Col++) { //0 - 4 is enough to find a 4-5 pair
+                    if (Grid[Row][Col] !== null && Grid[Row][Col] == Grid[Row][Col + 1]) {
+                        if (Col > 0) { // is there a space to the left?
+                            Grid[Row][Col - 1] = (1 - Grid[Row][Col]); // inserts to the left of the pair
+                        }
+                        if (Col < GridSize - 1) { // is there a space to the right?
+                            Grid[Row][Col + 2] = (1 - Grid[Row][Col]); // inserts to the right of the pair
+                        }
+                    }
+                }
+            }
+            document.getElementById('arrayView2D').value = Grid;
+            displayGrid(Grid); // send the updated grid to the screen
         }
         function SolveColPairs() { // Similar to column pairs
-            window.alert('SolveColPairs has not been coded yet');
+
         }
+                
         function SolveNumberTrios() {
             window.alert('SolveNumberTrios has not been coded yet');
         }
