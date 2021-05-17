@@ -176,8 +176,24 @@
         }
 
         function SolveNumberTrios() {
-            window.alert('SolveNumberTrios has not been coded yet');
+            var GridSize = 6;
+            for (let Row = 0; Row < GridSize; Row++) {
+                for (let Col = 0; Col < GridSize - 2; Col++) {
+                    if (Grid[Row][Col] == !null && Grid[Row][Col] == Grid[Row][Col + 2]) {
+                        Grid[Row][Col + 1] = (1 - Grid[Row][Col]);
+                    }
+                }
+            }
+            for (let Col = 0; Col < GridSize; Col++) {
+                for (let Row = 0; Row < GridSize - 2; Row++) {
+                    if (Grid[Row][Col] == !null && Grid[Row][Col] == Grid[Row + 2][Col]) {
+                        Grid[Row + 1][Col] = (1 - Grid[Row][Col]);
+                    }
+                }
+            }
+            displayGrid(Grid);
         }
+
         function CompleteRowsCols() {
             window.alert('CompleteRowsCols has not been coded yet');
         }
