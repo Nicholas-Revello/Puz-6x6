@@ -33,6 +33,7 @@
         var Row = 6;     // declare # of rows
         var Col = 6;     // declare # of columns
         var Grid = [];   // 2D array of 6 rows (6 arrays of GridCol). Indexes will be Row, then Column
+        var CompleteButton = false;
 
 
         //A1, A2, A3, A4, A5, A6, B1, B2, B3, B4, B5, B6, C1, C2, C3, C4, C5, C6, D1, D2, D3, D4, D5, D6, E1, E2, E3, E4, E5, E6, F1, F2, F3, F4, F5, F6
@@ -131,13 +132,28 @@
             }
         }
         function BinaryPuzzleSolver() {  //Code the top level module here
-            window.alert('BinaryPuzzleSolver has not been coded yet');
+            var notpos = 0;
+            var hep = Grid.length; //Code the top level module here
+            for (let repeat = 0; repeat < 8; repeat++) {
+                SolvePuzzle();
+                if (repeat <= 8 && CompleteButton == false) {
+                    if (CompleteRowsCols()) {
+                        CompleteButton = true;
+                        return true;
+                    } else {
+                        CompleteButton = true;
+                        return false
+                    }
+                }
+            }
         }
-        function SolvePuzzle() { //See structure chart for what goes here
-            window.alert('SolvePuzzle has not been coded yet');
+        function SolvePuzzle(G2D) { //See structure chart for what goes here
+            SolveNumberPairs();
+            SolveNumberTrios();
         }
         function SolveNumberPairs() { // call row and column
-            window.alert('SolveNumberPairs has not been coded yet');
+            SolveRowPairs();
+            SolveColPairs();
         }
         function SolveRowPairs() { // See pseudocode in Q22f for the row part here
             //  7/5/21 Nev, as in psuedo below - adds the opposite number to either side of a row pair
@@ -195,7 +211,53 @@
         }
 
         function CompleteRowsCols() {
-            window.alert('CompleteRowsCols has not been coded yet');
+            var GridSize = 6;
+            let row1tot = 0;
+            let row0tot = 0;
+            for (let Row = 0; Row < GridSize; Row++) {
+                for (let Col = 0; Col < GridSize; Col++) {
+                    if (Grid[Row][Col] == "0") {
+                        row0tot = row0tot + 1;
+                    }
+                    if (Grid[Row][Col] == "1") {
+                        row1tot = row1tot + 1;
+                    }
+                }
+                for (let Col = 0; Col < GridSize; Col++) {
+                    if (Grid[Row][Col] == "" && row0tot == 3) {
+                        Grid[Row][Col] = 1;
+                    }
+                    if (Grid[Row][Col] == "" && row1tot == 3) {
+                        Grid[Row][Col] = 0;
+                    }
+                }
+                row1tot = 0;
+                row0tot = 0;
+            }
+            // col
+            let col1tot = 0;
+            let col0tot = 0;
+            for (let Col = 0; Col < GridSize; Col++) {
+                for (let Row = 0; Row < GridSize; Row++) {
+                    if (Grid[Row][Col] == "0") {
+                        col0tot = col0tot + 1;
+                    }
+                    if (Grid[Row][Col] == "1") {
+                        col1tot = col1tot + 1;
+                    }
+                }
+                for (let Row = 0; Row < GridSize; Row++) {
+                    if (Grid[Row][Col] == "" && col0tot == 3) {
+                        Grid[Row][Col] = 1;
+                    }
+                    if (Grid[Row][Col] == "" && col1tot == 3) {
+                        Grid[Row][Col] = 0;
+                    }
+                }
+                col1tot = 0;
+                col0tot = 0;
+            }
+            displayGrid(Grid);
         }
 
     </script>
