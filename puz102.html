@@ -142,25 +142,25 @@
         function SolveRowPairs() { // See pseudocode in Q22f for the row part here
             //  7/5/21 Nev, as in psuedo below - adds the opposite number to either side of a row pair
             var GridSize = 6;
-            for (let Row = 0; Row < GridSize; Row++) { // 0 - 5 does the bottom row
-                for (let Col = 0; Col < GridSize - 1; Col++) { //0 - 4 is enough to find a 4-5 pair
-                    if (Grid[Row][Col] !== null && Grid[Row][Col] == Grid[Row][Col + 1]) {
-                        if (Col > 0) { // is there a space to the left?
-                            Grid[Row][Col - 1] = (1 - Grid[Row][Col]); // inserts to the left of the pair
+            for (let Row = 0; Row < GridSize; Row++) {
+                for (let Col = 0; Col < GridSize - 1; Col++) {
+                    if (Grid[Row][Col] == !null && Grid[Row][Col] == Grid[Row][Col + 1]) {
+                        if (Col > 0) {
+                            Grid[Row][Col - 1] = (1 - Grid[Row][Col]);
                         }
-                        if (Col < GridSize - 1) { // is there a space to the right?
-                            Grid[Row][Col + 2] = (1 - Grid[Row][Col]); // inserts to the right of the pair
+                        if (Col < GridSize - 2) {
+                            Grid[Row][Col + 2] = (1 - Grid[Row][Col]);
                         }
                     }
                 }
             }
             document.getElementById('arrayView2D').value = Grid;
-            displayGrid(Grid); // send the updated grid to the screen
+            displayGrid(Grid);
         }
         function SolveColPairs() { // Similar to column pairs
 
         }
-                
+
         function SolveNumberTrios() {
             window.alert('SolveNumberTrios has not been coded yet');
         }
@@ -170,7 +170,7 @@
 
     </script>
 </head>
-<body onload="loadGrid(GT)">
+<body>
     <form id="input">
         <h1>Binary Puzzle Game (6x6)</h1>
         <h2>v1.09: <span style="background: yellow; highlight: yellow">Global vs local variables - function to display grid - ERROR: Grid not wiping on load</span></h2>
@@ -317,4 +317,4 @@
         <br />
     </form>
 </body>
-</html>
+</html>tml>
