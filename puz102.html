@@ -158,7 +158,21 @@
             displayGrid(Grid);
         }
         function SolveColPairs() { // Similar to column pairs
-
+            var GridSize = 6;
+            for (let Col = 0; Col < GridSize; Col++) {
+                for (let Row = 0; Row < GridSize - 1; Row++) {
+                    if (Grid[Row][Col] == !null && Grid[Row][Col] == Grid[Row + 1][Col]) {
+                        if (Row > 0) {
+                            Grid[Row - 1][Col] = (1 - Grid[Row][Col]);
+                        }
+                        if (Row < GridSize - 2) {
+                            Grid[Row + 2][Col] = (1 - Grid[Row][Col]);
+                        }
+                    }
+                }
+            }
+            document.getElementById('arrayView2D').value = Grid;
+            displayGrid(Grid);
         }
 
         function SolveNumberTrios() {
