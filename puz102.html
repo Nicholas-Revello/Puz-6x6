@@ -173,11 +173,31 @@
             document.getElementById('arrayView2D').value = Grid;
             displayGrid(Grid);
         }
+
+       /*function SolveColPairs0() {
+            var GridSize = 6;
+            for (let Col = 0; Col < GridSize; Col++) {
+                for (let Row = 0; Row < GridSize - 1; Row++) {
+                    if (Grid[Row][Col] == "0" && Grid[Row][Col] == Grid[Row + 1][Col]) {
+                        if (Row > 0) {
+                            Grid[Row - 1][Col] = (1 - Grid[Row][Col]);
+                        }
+                        if (Row < GridSize - 2) {
+                            Grid[Row + 2][Col] = (1 - Grid[Row][Col]);
+                        }
+                    }
+                }
+            }
+            document.getElementById('arrayView2D').value = Grid;
+            displayGrid(Grid);
+       }
+       */
+
         function SolveColPairs() { // Similar to column pairs
             var GridSize = 6;
             for (let Col = 0; Col < GridSize; Col++) {
                 for (let Row = 0; Row < GridSize - 1; Row++) {
-                    if (Grid[Row][Col] == !null && Grid[Row][Col] == Grid[Row + 1][Col]) {
+                    if (Grid[Row][Col] == "1" && Grid[Row][Col] == Grid[Row + 1][Col]) {
                         if (Row > 0) {
                             Grid[Row - 1][Col] = (1 - Grid[Row][Col]);
                         }
@@ -262,47 +282,91 @@
 
     </script>
 </head>
-<body>
-    <form id="input">
-        <h1>Binary Puzzle Game (6x6)</h1>
-        <h2>v1.09: <span style="background: yellow; highlight: yellow">Global vs local variables - function to display grid - ERROR: Grid not wiping on load</span></h2>
-        <p>Return to <a href="index.html">home</a>:</p>
-        Choose a game to solve:<br />
-        
-        <select id="cboPuzNo" onchange="loadGrid(eval(value))">
-                    <!--<select id="cboPuzNo" onchange="LoadGrid(eval(value))">-->
-            <!--<select id="cboPuzNo">-->
-            <option value="GT">Test 1-36</option>
-            <option value='G01'>Example in Q</option>
-            <option value="G02">Game 2</option>
-            <option value="G03">Game 3</option>
-            <option value="G04">Game 4</option>
-            <option value="G05">Game 5</option>
-            <option value="G06">Game 6</option>
-            <option value="G07">Game 7</option>
-            <option value="G08">Game 8</option>
-            <option value="G09">Game 9</option>
-            <option value="G10">Game 10</option>
-            <option value="G11">Game 11</option>
-            <option value="G12">Game 12</option>
-            <option value="G13">Game 13</option>
-        </select>
 
-        <!--  3/8/19 Board cell labels have "B" for board, then column digit, then row digit"  -->
+<body >
+    <style>
+        body {
+            background-color: cadetblue;
+        }
+        .gameboard {
+            margin-left: auto;
+            margin-right: auto;
+            width: 40px;
+            border: dashed;
+            border-color: mediumaquamarine;
+        }
+
+        #SolveRe {
+            position: absolute;
+            right: 300px;
+            top: 100px;
+        }
+
+        #SolveOn {
+            position: absolute;
+            right: 150px;
+            top: 100px;
+        }
+
+        #SolvePair {
+            position: absolute;
+            right: 150px;
+            top: 125px;
+        }
+
+        #Trio {
+            position: absolute;
+            right: 195px;
+            top: 125px;
+        }
+
+        #Complete {
+            position: absolute;
+            right: 235px;
+            top: 125px;
+        }
+
+        #RowPair {
+            position: absolute;
+            right: 300px;
+            top: 125px;
+        }
+
+        #ColPair {
+            position: absolute;
+            right: 365px;
+            top: 125px;
+        }
+
+        #tittle {
+            position: absolute;
+            left: 600px;
+        }
+
+        #VInfo {
+            position: absolute;
+            left: 650px;
+            bottom: 20px;
+        }
+
+        #Arrays {
+            position: absolute;
+            top: 100px;
+        }
+
+    </style>
+
+    <form id="input">
+        <h1 id="tittle">Binary Puzzle Game (6x6)</h1>
+        <h2 id="VInfo">Version Info: V110 Final</h2>
+        <input id="SolveRe" type="button" value="--- Solve Repeat ---" onclick="BinaryPuzzleSolver()" /><br />
+        <input id="SolveOn" type="button" value="--- Solve once ---" onclick="SolvePuzzle()" /><br />
+        <input id="SolvePair" onclick="SolveNumberPairs()" type="button" value="Pairs" />
+        <input id="Trio" type="button" value="Trios" onclick="SolveNumberTrios()" />
+        <input id="Complete" type="button" value="Complete" onclick="CompleteRowsCols()" />
         <br />
-        The buttons here form a test bed similar to the structure chart.
-        <br />
-        Later, we can improve the screen design.<br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-        <input type="button" value="--- Solve repeat ---" onclick="BinaryPuzzleSolver()" />&nbsp;&nbsp;&nbsp;<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
-        <input type="button" value="--- Solve once ---" onclick="SolvePuzzle()" />&nbsp;&nbsp;<br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="SolveNumberPairs()" type="button" value="Pairs" />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
-                <input type="button" value="Trios" onclick="SolveNumberTrios()" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="button" value="Complete" onclick="CompleteRowsCols()" />
-        <br />
-&nbsp;<input type="button" value="RowPairs" onclick="SolveRowPairs()" />&nbsp;
-        <input type="button" value="ColPairs" onclick="SolveColPairs()" />&nbsp;
+        <input id="RowPair" type="button" value="RowPairs" onclick="SolveRowPairs()" />
+        <input id="ColPair" type="button" value="ColPairs" onclick="SolveColPairs()" />
 <br />
         
         <!--  set up the board as a table with a textbox in each cell  -->
@@ -398,6 +462,9 @@
             </tr>
         </table>
         <br />
+        </form>
+
+    <form id="Arrays">
                 Test view of Grid with no indexes as a 1D array:<br />
         <textarea id="arrayView1D" cols="30" rows="7"></textarea><br />
         <br />
@@ -409,4 +476,4 @@
         <br />
     </form>
 </body>
-</html>tml>
+</html>
